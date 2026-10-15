@@ -237,3 +237,123 @@ body {
   z-index: 2;
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
+
+
+/* seção do rodapé */
+.secao-passos {
+  background-color: #1B3B32; 
+  padding: 5rem 3rem;
+  box-sizing: border-box;
+  color: #FFFFFF;
+}
+
+.container-passos {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+
+.passos-cabecalho {
+  flex: 1.1;
+  max-width: 500px;
+}
+
+.passos-rotulo {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #E26A51; 
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.2rem;
+}
+
+.passos-titulo {
+  font-family: "Playfair Display", Georgia, Cambria, "Times New Roman", serif;
+  font-size: 3.8rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+
+.passos-lista {
+  flex: 1.8;
+  display: flex;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.passo-item {
+  flex: 1;
+  border-left: 1px solid rgba(255, 255, 255, 0.15); 
+  padding-left: 1.8rem;
+}
+
+
+.passo-numero {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.6rem;
+  font-variant-numeric: lining-nums;
+  font-style: italic;
+  color: #E26A51;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.passo-titulo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0 0 0.8rem 0;
+}
+
+.passo-descricao {
+  font-size: 0.95rem;
+  color: #B2C4BD; 
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* responsividade da área rodapé */
+@media (max-width: 900px) {
+  .secao-passos {
+    padding: 3rem 1.5rem; 
+  }
+
+  .container-passos {
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  .passos-cabecalho {
+    max-width: 100%;
+  }
+
+  .passos-titulo {
+    font-size: 2.5rem; 
+  }
+
+  .passos-lista {
+    flex-direction: column; 
+    width: 100%;
+    gap: 2rem;
+  }
+
+  .passo-item {
+    border-left: none; 
+    border-top: 1px solid rgba(255, 255, 255, 0.15); 
+    padding-top: 1.5rem;
+  }
+
+  .passo-numero {
+    margin-bottom: 0.8rem;
+  }
+}
