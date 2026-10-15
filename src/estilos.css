@@ -1,0 +1,92 @@
+/* estilo do cabeçalho fixo */
+
+.cabecalho-fixo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #F0EAE1; 
+  z-index: 1000;             
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.cabecalho-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.8rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.logo-texto {
+  font-family: serif;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #1F302B;            
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+
+.menu-navegacao {
+  display: flex;
+  gap: 3.5rem;
+}
+
+.link-menu {
+  text-decoration: none;
+  color: #2D3748;
+  font-size: 1.05rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+
+.link-menu::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;                   
+  height: 2px;
+  background-color: #E26A51;  
+  transition: width 0.3s ease; 
+}
+
+.link-menu:hover {
+  color: #E26A51;
+}
+
+.link-menu:hover::after {
+  width: 100%;                 
+}
+
+
+.btn-entrar {
+  display: inline-block;
+  padding: 0.65rem 1.8rem;
+  border: 1.5px solid #A0A0A0;
+  border-radius: 50px;
+  color: #2D3748;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-entrar:hover {
+  border-color: #E26A51;
+  color: #E26A51;
+  background-color: rgba(226, 106, 81, 0.05);
+}
+
+
+body {
+  padding-top: 100px;
+  background-color: #F0EAE1;
+  margin: 0;
+}
