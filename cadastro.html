@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laço — Criar Conta</title>
+  
+  <link rel="stylesheet" href="src/cadastro.css">
+</head>
+<body>
+
+  <main class="pagina-autenticacao">
+    <div class="container-autenticacao">
+      
+      <div class="autenticacao-cabecalho">
+        <a href="index.html" class="autenticacao-logo">
+          <span class="logo-icone"></span> laço
+        </a>
+        <span class="autenticacao-rotulo">BOAS-VINDAS</span>
+        <h1 class="autenticacao-titulo">Crie sua conta para <span>começar</span></h1>
+        <p class="autenticacao-subtitulo">
+          Junte-se à nossa comunidade e ajude a transformar vidas.
+        </p>
+      </div>
+      
+      <form class="formulario-autenticacao" action="#" method="POST">
+        
+        <div class="grupo-campo">
+          <label for="nome" class="campo-rotulo">Nome completo</label>
+          <div class="campo-input-wrapper">
+            <input 
+              type="text" 
+              id="nome" 
+              name="nome" 
+              class="campo-input" 
+              placeholder="Ex.: Maria Silva"
+              required
+            />
+          </div>
+        </div>
+        
+        <div class="grupo-campo">
+          <label for="email" class="campo-rotulo">E-mail</label>
+          <div class="campo-input-wrapper">
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="campo-input" 
+              placeholder="seu.email@exemplo.com"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="grupo-campo">
+          <label for="senha" class="campo-rotulo">Senha</label>
+          <div class="campo-input-wrapper">
+            <input 
+              type="password" 
+              id="senha" 
+              name="senha" 
+              class="campo-input" 
+              placeholder="Crie uma senha segura"
+              minlength="8"
+              required
+            />
+          </div>
+          <span class="campo-ajuda">Mínimo de 8 caracteres.</span>
+        </div>
+
+        <button type="submit" class="botao-submit">
+          Criar minha conta
+        </button>
+      </form>
+   
+      <div class="autenticacao-rodape">
+        <p>Já tem uma conta? <a href="login.html" class="link-destaque">Fazer login</a></p>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

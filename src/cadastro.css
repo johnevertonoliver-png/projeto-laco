@@ -1,0 +1,171 @@
+/* configuração de cadastro */
+.pagina-autenticacao {
+  min-height: 100vh;
+  background-color: #F0EAE1; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1.5rem;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.container-autenticacao {
+  background-color: #FFFFFF;
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(40, 54, 48, 0.08);
+}
+
+/* Header do Form */
+.autenticacao-cabecalho {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.autenticacao-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #283630;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+
+.autenticacao-rotulo {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #E26A51;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.autenticacao-titulo {
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #283630;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.autenticacao-titulo span {
+  color: #E26A51;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.autenticacao-subtitulo {
+  font-size: 0.95rem;
+  color: #5A6560;
+  margin: 0;
+}
+
+/* Campos do Form */
+.formulario-autenticacao {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.grupo-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.campo-rotulo {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #283630;
+}
+
+.campo-input-wrapper {
+  position: relative;
+}
+
+.campo-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1.5px solid #DCE5E0;
+  background-color: #FAFAFA;
+  font-size: 0.95rem;
+  color: #283630;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  font-family: inherit;
+}
+
+.campo-input:focus {
+  border-color: #283630;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(40, 54, 48, 0.1);
+}
+
+.campo-ajuda {
+  font-size: 0.78rem;
+  color: #7A8680;
+}
+
+
+.botao-submit {
+  width: 100%;
+  background-color: #E26A51;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.95rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  box-shadow: 0 6px 16px rgba(226, 106, 81, 0.25);
+  margin-top: 0.5rem;
+  font-family: inherit;
+}
+
+.botao-submit:hover {
+  background-color: #D15A41;
+  transform: translateY(-1px);
+}
+
+
+.autenticacao-rodape {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #EFEFEF;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #5A6560;
+}
+
+.link-destaque {
+  color: #E26A51;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link-destaque:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 480px) {
+  .container-autenticacao {
+    padding: 2rem 1.5rem;
+  }
+  
+  .autenticacao-titulo {
+    font-size: 1.8rem;
+  }
+}
