@@ -90,3 +90,150 @@ body {
   background-color: #F0EAE1;
   margin: 0;
 }
+
+/* configuração da seção hero */
+.secao-hero {
+  background-color: #F0EAE1; 
+  padding: 2rem 3rem 4rem 3rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 90px);
+}
+
+.container-hero {
+  max-width: 1450px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+
+.hero-conteudo {
+  flex: 1.1;
+  max-width: 680px;
+}
+
+
+.hero-rotulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #E26A51;
+  text-transform: uppercase;
+}
+
+.hero-rotulo::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background-color: #E26A51;
+}
+
+/* títlo principal da hero */
+.hero-titulo {
+  font-family: "Playfair Display", Georgia, Cambria, "Times New Roman", serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: #2E4A3E;            
+  line-height: 1.08;
+  margin: 1rem 0 1.5rem 0;
+  letter-spacing: -1px;
+}
+
+.hero-titulo span {
+  color: #E26A51;            
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-descricao {
+  color: #5A6560;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  margin-bottom: 2.2rem;
+  max-width: 500px;
+}
+
+
+.botao-principal {
+  display: inline-block;
+  background-color: #E26A51;
+  color: #FFFFFF;
+  padding: 1rem 2rem;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.2s, transform 0.1s;
+  box-shadow: 0 8px 20px rgba(226, 106, 81, 0.25);
+}
+
+.botao-principal:hover {
+  background-color: #D15A41;
+  transform: translateY(-2px);
+}
+
+
+.hero-beneficios {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2.2rem;
+}
+
+.beneficio-item {
+  font-size: 0.95rem;
+  color: #2D3748;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.beneficio-item::before {
+  content: "✓";
+  color: #E26A51;
+  font-weight: bold;
+}
+
+/* coluna da imagem */
+.hero-wrapper-imagem {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  position: relative;
+  height: 600px;
+}
+
+
+.fundo-forma-organica {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  background-color: #DCE5E0;
+  /* o formato ovoide do fundo */
+  border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+  z-index: 1;
+  right: -30px; 
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* foto principal */
+.foto-organica {
+  position: relative;
+  width: 480px;
+  height: 560px;
+  object-fit: cover;
+  border-radius: 40% 60% 50% 50% / 40% 50% 60% 50%;
+  z-index: 2;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
