@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laço — Entrar na sua conta</title>
+  <link rel="stylesheet" href="./src/login.css" />
+</head>
+
+<body class="pagina-login">
+
+  <header class="topo-simples">
+    <div class="topo-container">
+      <a href="./index.html" class="logo-texto">laço</a>
+    </div>
+  </header>
+
+  <main class="login-wrapper">
+    
+    <div class="login-banner">
+
+      <img src="./src/assets/foto-login.png" alt="Pessoa abraçando um pet" class="banner-imagem" />
+
+      <div class="banner-overlay">
+        <p class="banner-frase">
+          <span class="icone-coracao">♥</span> Todo animal merece a chance de chamar um lugar de lar.
+        </p>
+      </div>
+    </div>
+
+   
+    <div class="login-form-container">
+        
+      <div class="form-box">
+        <span class="subtitulo-topo">QUE BOM TER VOCÊ AQUI</span>
+        <h1>Entre na sua conta</h1>
+        <p class="descricao-instrucao">Acompanhe seus animais publicados e os amigos que você favoritou.</p>
+
+        <form id="form-login">
+          <div class="grupo-input">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="voce@email.com" required>
+          </div>
+
+          <div class="grupo-input">
+            <div class="label-senha-wrapper">
+              <label for="senha">Senha</label>
+              <a href="#" id="link-esqueci-senha" class="link-esqueci">Esqueci minha senha</a>
+            </div>
+            <input type="password" id="senha" placeholder="Sua senha" required>
+          </div>
+
+          <button type="submit" class="btn-continuar">Entrar na minha conta &rarr;</button>
+        </form>
+
+        <p class="texto-cadastro-alternativo">
+          Ainda não tem cadastro? <a href="./cadastro.html">Criar conta grátis</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
