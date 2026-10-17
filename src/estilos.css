@@ -357,3 +357,76 @@ body {
     margin-bottom: 0.8rem;
   }
 }
+
+.container-usuario-logado {
+  position: relative;
+  display: inline-block;
+}
+
+/* botão do perfil que substitui o "entrar" */
+.botao-perfil-menu {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1.8rem;
+  border: 1.5px solid #A0A0A0;
+  border-radius: 50px;
+  background-color: transparent;
+  color: #2D3748;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.botao-perfil-menu:hover {
+  border-color: #E26A51;
+  color: #E26A51;
+  background-color: rgba(226, 106, 81, 0.05);
+}
+
+.icone-seta-baixo {
+  font-size: 0.6rem;
+  transition: transform 0.2s ease;
+}
+
+/* menu suspenso (dropdown) */
+.menu-suspenso {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  background-color: #FFFFFF;
+  min-width: 180px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 1000;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+
+.item-menu {
+  display: block;
+  padding: 12px 18px;
+  color: #2D3748;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.item-menu:hover {
+  background-color: rgba(226, 106, 81, 0.05);
+  color: #E26A51;
+}
+
+.item-sair {
+  color: #DC2626;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.item-sair:hover {
+  background-color: rgba(220, 38, 38, 0.05);
+  color: #DC2626;
+}

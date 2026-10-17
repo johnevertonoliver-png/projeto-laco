@@ -20,8 +20,21 @@
 </nav>
 
   <div class="area-usuario">
-    <a href="./login.html" class="btn-entrar">Entrar</a>
+    <a href="./login.html" id="botao-entrar" class="btn-entrar">Entrar</a>
     </div>
+
+    <div id="container-usuario-logado" class="container-usuario-logado" style="display: none;">
+    <button id="botao-perfil-menu" class="botao-perfil-menu">
+      <span id="texto-primeiro-nome">Nome</span>
+      <span class="icone-seta-baixo">▼</span>
+    </button>
+
+    <div id="menu-suspenso" class="menu-suspenso" style="display: none;">
+      <a href="perfil.html" class="item-menu">Meu Perfil</a>
+      <a href="#" id="link-sair" class="item-menu item-sair">Sair</a>
+    </div>
+
+  </div>
   </div>
 </header>
 
