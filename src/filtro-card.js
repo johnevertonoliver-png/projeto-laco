@@ -1,5 +1,3 @@
-import { listaPets } from "./pets.js";
-
 document.addEventListener('DOMContentLoaded', () => {
   
   const gridPets = document.getElementById('grid-pets');
@@ -9,11 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let especieSelecionada = 'todos'; 
 
+  /* ler direto do localstorage */
+  const listaPets = JSON.parse(localStorage.getItem('laco_pets')) || [];
+
   function renderizarPets(pets) {
     gridPets.innerHTML = '';
 
     if (pets.length === 0) {
-      gridPets.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: #718096; padding: 2rem;">Nenhum pet encontrado com esses filtros.</p>';
+      gridPets.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: #718096; padding: 2rem;">Nenhum pet cadastrado ou encontrado com esses filtros.</p>';
       return;
     }
 
@@ -21,11 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('div');
       card.classList.add('card-pet');
 
+      const statusAtual = pet.status || 'disponivel';
+
       card.innerHTML = `
         <div class="card-imagem-wrapper">
-          <span class="badge-disponivel ${pet.status}">${pet.statusTexto}</span>
+          <span class="badge-disponivel ${statusAtual}">${statusAtual === 'adotado' ? 'ADOTADO' : 'DISPONÍVEL'}</span>
           <button class="btn-favoritar" aria-label="Favoritar pet">&#9825;</button>
-          <img src="${pet.imagem}" alt="${pet.nome}" class="card-img" />
+          <img src="${pet.foto}" alt="${pet.nome}" class="card-img" />
         </div>
         <div class="card-conteudo">
           <div class="card-info-topo">
@@ -50,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function filtrarPorEspecie(pet) {
     if (especieSelecionada === 'todos') return true;
-    return pet.especie === especieSelecionada;
+    return pet.especie.toLowerCase() === especieSelecionada.toLowerCase();
   }
 
   function filtrarPorTexto(pet) {
@@ -69,13 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!faixaIdade) return true; 
 
     if (faixaIdade === 'filhote') {
-      return pet.idade.includes('meses') || (parseInt(pet.idade) < 1);
+      return pet.idade.toLowerCase().includes('meses') || (parseInt(pet.idade) < 1);
     } else if (faixaIdade === 'adulto') {
       const anos = parseInt(pet.idade);
-      return !pet.idade.includes('meses') && anos >= 1 && anos <= 5;
+      return !pet.idade.toLowerCase().includes('meses') && anos >= 1 && anos <= 5;
     } else if (faixaIdade === 'idoso') {
       const anos = parseInt(pet.idade);
-      return !pet.idade.includes('meses') && anos > 5;
+      return !pet.idade.toLowerCase().includes('meses') && anos > 5;
     }
 
     return true;
