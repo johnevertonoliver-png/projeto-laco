@@ -68,6 +68,44 @@
   </div>
 </section>
 
+<section class="secao-pets" id="secao-pets">
+  <div class="container-pets">
+    
+    <div class="pets-cabecalho">
+      <span class="pets-rotulo">NOVOS AMIGOS</span>
+      <h2 class="pets-titulo">Quem vai conquistar você?</h2>
+      <p class="pets-subtitulo">Use os filtros e encontre um novo melhor amigo que combine com a sua rotina.</p>
+    </div>
+
+    <div class="barra-filtros">
+      <div class="filtros-especie">
+        <button class="filtro-btn" data-especie="todos">Todos os pets</button>
+        <button class="filtro-btn" data-especie="cachorro">🐶 Cachorros</button>
+        <button class="filtro-btn" data-especie="gato">🐱 Gatos</button>
+        <button class="filtro-btn" data-especie="outro">🐰 Outros</button>
+      </div>
+
+      <div class="filtros-busca">
+        <div class="input-busca-wrapper">
+          <span class="icone-lupa">🔍</span>
+          <input type="text" id="input-pesquisa" placeholder="Nome ou cidade" />
+        </div>
+        <select id="select-idade" class="select-idade">
+          <option value="">Todas as idades</option>
+          <option value="filhote">Até 1 ano</option>
+          <option value="adulto">1 a 5 anos</option>
+          <option value="idoso">Mais de 5 anos</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid-pets" id="grid-pets">
+      
+    </div>
+
+  </div>
+</section>
+
 
 <section class="secao-passos" id="como-funciona">
   <div class="container-passos">
@@ -110,7 +148,9 @@
 </section>
 
 
-<script type="module" src="/src/main.js"></script>
+<script type="module" src="./src/pets.js"></script>
+<script type="module" src="./src/filtro-card.js"></script>
+<script type="module" src="./src/main.js"></script>
 
   </body>
 </html>

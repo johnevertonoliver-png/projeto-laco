@@ -430,3 +430,344 @@ body {
   background-color: rgba(220, 38, 38, 0.05);
   color: #DC2626;
 }
+
+/* ==========================================
+   Seção de Listagem de Pets e Filtros
+   ========================================== */
+
+.secao-pets {
+  background-color: #F9F6F0; /* Creme bem suave/off-white que contrasta com o tom da hero */
+  padding: 4rem 3rem 6rem 3rem;
+  box-sizing: border-box;
+}
+
+.container-pets {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.pets-cabecalho {
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pets-rotulo {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #E26A51;
+  text-transform: uppercase;
+}
+
+.pets-titulo {
+  font-family: "Playfair Display", Georgia, Cambria, serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #1F302B;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.pets-subtitulo {
+  color: #5A6560;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* Barra de Filtros */
+.barra-filtros {
+  background-color: #FFFFFF; /* Fundo branco para a barra se destacar do creme suave */
+  border-radius: 16px;
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  flex-wrap: wrap;
+}
+
+.filtros-especie {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.filtro-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0.65rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2D3748;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filtro-btn:hover {
+  background-color: #F0EAE1;
+}
+
+.filtro-btn.ativo {
+  background-color: #1F302B; /* Verde escuro do protótipo */
+  color: #FFFFFF;
+}
+
+.filtros-busca {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.input-busca-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icone-lupa {
+  position: absolute;
+  left: 14px;
+  font-size: 0.85rem;
+  color: #A0AEC0;
+}
+
+#input-pesquisa {
+  padding: 0.65rem 1rem 0.65rem 2.4rem;
+  border: 1px solid #E2E8F0;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  outline: none;
+  width: 220px;
+  background-color: #FAFAFA;
+  transition: border-color 0.2s;
+}
+
+#input-pesquisa:focus {
+  border-color: #E26A51;
+  background-color: #FFFFFF;
+}
+
+.select-idade {
+  padding: 0.65rem 1.2rem;
+  border: 1px solid #E2E8F0;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  outline: none;
+  background-color: #FAFAFA;
+  color: #4A5568;
+  cursor: pointer;
+}
+
+.select-idade:focus {
+  border-color: #E26A51;
+}
+
+/* Grid de Cards */
+.grid-pets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 2rem;
+}
+
+/* Card Individual */
+.card-pet {
+  background-color: #FFFFFF; /* Fundo branco limpo para o card */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-pet:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.card-imagem-wrapper {
+  position: relative;
+  width: 100%;
+  height: 320px;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Estilo Base da Badge de Status --- */
+.badge-disponivel {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background-color: #FFFFFF; /* Fundo branco para a badge se destacar */
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 50px;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+}
+
+/* Pseudo-elemento para a bolinha */
+.badge-disponivel::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* --- Variação: Status DISPONÍVEL --- */
+.badge-disponivel.disponivel {
+  color: #15803D; /* Verde escuro para o texto */
+}
+
+/* Bolinha Verde para Disponível */
+.badge-disponivel.disponivel::before {
+  background-color: #22C55E; /* Verde brilhante para a bolinha */
+}
+
+/* --- Variação: Status ADOTADO --- */
+.badge-disponivel.adotado {
+  color: #1D4ED8; /* Azul escuro para o texto */
+}
+
+/* Bolinha Azul para Adotado */
+.badge-disponivel.adotado::before {
+  background-color: #3B82F6; /* Azul brilhante para a bolinha */
+}
+
+.btn-favoritar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: #FFFFFF;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: transform 0.2s;
+  color: #718096;
+}
+
+.btn-favoritar:hover {
+  transform: scale(1.1);
+  color: #E26A51;
+}
+
+/* Conteúdo do Card */
+.card-conteudo {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.card-info-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.card-nome {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1F302B;
+  margin: 0;
+}
+
+.card-idade {
+  font-size: 0.9rem;
+  color: #718096;
+  font-weight: 500;
+}
+
+.card-info-detalhes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.detalhe-item {
+  font-size: 0.95rem;
+  color: #E26A51; /* Cor laranja do protótipo para ícones/textos de detalhe */
+  font-weight: 500;
+}
+
+.card-divisor {
+  height: 1px;
+  background-color: #EDF2F7;
+  width: 100%;
+  margin: 0.2rem 0;
+}
+
+.card-link {
+  text-decoration: none;
+  color: #1F302B;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-link:hover {
+  color: #E26A51;
+}
+
+@media (max-width: 900px) {
+  .secao-pets {
+    padding: 3rem 1.5rem;
+  }
+
+  .pets-titulo {
+    font-size: 2.5rem;
+  }
+
+  .barra-filtros {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .filtros-especie {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .filtros-busca {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .input-busca-wrapper,
+  #input-pesquisa,
+  .select-idade {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
