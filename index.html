@@ -147,6 +147,54 @@
 
 </section>
 
+<!-- Modal de Detalhes / Adoção do Pet -->
+<div class="sobreposicao-modal" id="modal-detalhes-pet" style="display: none;">
+  <div class="container-modal-detalhes">
+    
+    <button class="botao-fechar-detalhes" id="botao-fechar-detalhes">&times;</button>
+
+    <div class="modal-conteudo-duplo">
+      <div class="modal-lado-foto">
+        <img id="modal-pet-foto" src="" alt="Foto do Pet">
+      </div>
+
+      <div class="modal-lado-info">
+        <h2 id="modal-pet-nome">Nome do Pet</h2>
+        <p id="modal-pet-sub-raca-idade" class="sub-raca-idade">Raça · Idade</p>
+
+        <p id="modal-pet-sobre" class="texto-sobre">
+          Descrição sobre o pet aparecerá aqui...
+        </p>
+
+        <div class="container-caracteristicas">
+          <div class="caixa-caracteristica">
+            <span class="rotulo-caracteristica">SEXO</span>
+            <span id="modal-pet-sexo" class="valor-caracteristica">Macho</span>
+          </div>
+          <div class="caixa-caracteristica">
+            <span class="rotulo-caracteristica">PORTE</span>
+            <span id="modal-pet-porte" class="valor-caracteristica">Grande</span>
+          </div>
+          <div class="caixa-caracteristica">
+            <span class="rotulo-caracteristica">IDADE</span>
+            <span id="modal-pet-idade" class="valor-caracteristica">Adulto</span>
+          </div>
+        </div>
+
+        <div class="localizacao-modal">
+          📍 Está em <span id="modal-pet-cidade">Cidade, Estado</span>
+        </div>
+
+        <button id="modal-btn-quero-adotar" class="botao-quero-adotar">
+          Quero adotar ➔
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 <script type="module" src="./src/js/filtro-card.js"></script>
 <script type="module" src="./src/js/main.js"></script>

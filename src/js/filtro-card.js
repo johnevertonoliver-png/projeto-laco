@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-      // Evento do botão favoritar
+      /* evento do botão favoritar */
       const botaoFavoritar = card.querySelector('.btn-favoritar');
       botaoFavoritar.addEventListener('click', () => {
         if (!usuarioLogado) {
@@ -78,6 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         localStorage.setItem(chaveFavoritos, JSON.stringify(favoritos));
+      });
+
+      /* evento  para abrir o modal ao clicar no link "Quero conhecer" */
+      const linkQueroConhecer = card.querySelector('.card-link');
+      linkQueroConhecer.addEventListener('click', (e) => {
+        e.preventDefault();
+        abrirModalDetalhes(pet);
       });
 
       gridPets.appendChild(card);
@@ -154,3 +161,41 @@ document.addEventListener('DOMContentLoaded', () => {
   
   renderizarPets(listaPets); 
 });
+
+
+/* lógica do modal de detalhes do pet */
+
+export function abrirModalDetalhes(pet) {
+  const modal = document.getElementById('modal-detalhes-pet');
+  if (!modal) return;
+
+  /* preenche os dados do pet selecionado */
+  document.getElementById('modal-pet-foto').src = pet.foto;
+  document.getElementById('modal-pet-nome').textContent = pet.nome;
+  document.getElementById('modal-pet-sub-raca-idade').textContent = `${pet.raca} · ${pet.idade}`;
+  document.getElementById('modal-pet-sobre').textContent = pet.sobre;
+  document.getElementById('modal-pet-sexo').textContent = pet.sexo;
+  document.getElementById('modal-pet-porte').textContent = pet.porte;
+  document.getElementById('modal-pet-idade').textContent = pet.idade;
+  document.getElementById('modal-pet-cidade').textContent = pet.cidade;
+
+  modal.style.display = 'flex';
+}
+
+/* configuração para fechar o modal */
+const modalDetalhes = document.getElementById('modal-detalhes-pet');
+const btnFecharDetalhes = document.getElementById('botao-fechar-detalhes');
+
+if (btnFecharDetalhes) {
+  btnFecharDetalhes.addEventListener('click', () => {
+    modalDetalhes.style.display = 'none';
+  });
+}
+
+if (modalDetalhes) {
+  modalDetalhes.addEventListener('click', (e) => {
+    if (e.target === modalDetalhes) {
+      modalDetalhes.style.display = 'none';
+    }
+  });
+}
