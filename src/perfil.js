@@ -20,6 +20,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* controle de abas "Meus pets" e "Favoritos" */
+  const menuMeusPets = document.getElementById('menu-meus-pets');
+  const menuFavoritos = document.getElementById('menu-favoritos');
+  const secaoMeusPets = document.getElementById('secao-meus-pets');
+  const secaoFavoritos = document.getElementById('secao-favoritos');
+
+  const tituloPrincipal = document.querySelector('.titulo-principal');
+  const botaoCadastrar = document.querySelector('.botao-cadastrar');
+
+  if (menuMeusPets && menuFavoritos) {
+    /* clique na aba "Meus pets" */
+    menuMeusPets.addEventListener('click', (e) => {
+      e.preventDefault();
+      menuMeusPets.classList.add('ativo');
+      menuFavoritos.classList.remove('ativo');
+      
+      /* mostra a seção de meus pets e esconde a de favoritos */
+      if (secaoMeusPets) secaoMeusPets.style.display = 'block';
+      if (secaoFavoritos) secaoFavoritos.style.display = 'none';
+
+      if (tituloPrincipal) tituloPrincipal.textContent = 'Meus pets publicados';
+      if (botaoCadastrar) botaoCadastrar.style.display = 'inline-flex';
+
+    });
+
+    /* clique na aba "Favoritos" */
+    menuFavoritos.addEventListener('click', (e) => {
+      e.preventDefault();
+      menuFavoritos.classList.add('ativo');
+      menuMeusPets.classList.remove('ativo');
+      
+      /*Esconde a seção de meus pets e mostra a de favoritos */
+      if (secaoMeusPets) secaoMeusPets.style.display = 'none';
+      if (secaoFavoritos) secaoFavoritos.style.display = 'block';
+
+      if (tituloPrincipal) tituloPrincipal.textContent = 'Meus pets favoritos';
+      if (botaoCadastrar) botaoCadastrar.style.display = 'none'; 
+
+      renderizarFavoritosPerfil();
+    });
+  }
  
   const containerPetsPerfil = document.getElementById('lista-pets-perfil');
 
@@ -107,8 +148,56 @@ document.addEventListener('DOMContentLoaded', () => {
   /* executa a listagem inicial no perfil */
   renderizarPetsPerfil();
 
+
+  /* renderizar favoritos no perfil */
+  const containerFavoritosPerfil = document.getElementById('lista-favoritos-perfil');
+
+  function renderizarFavoritosPerfil() {
+    if (!containerFavoritosPerfil) return;
+
+    const usuarioLogado = JSON.parse(localStorage.getItem('laco_usuario_logado'));
+    if (!usuarioLogado) return;
+
+    const chaveFavoritos = `laco_favoritos_${usuarioLogado.email}`;
+    const idsFavoritos = JSON.parse(localStorage.getItem(chaveFavoritos)) || [];
+    const petsSalvos = JSON.parse(localStorage.getItem('laco_pets')) || [];
+
+    const meusFavoritos = petsSalvos.filter(pet => idsFavoritos.includes(pet.id));
+
+    containerFavoritosPerfil.innerHTML = '';
+
+    if (meusFavoritos.length === 0) {
+      containerFavoritosPerfil.innerHTML = '<p style="color: #64748b; font-size: 14px; padding: 12px 0;">Você ainda não favoritou nenhum pet.</p>';
+      return;
+    }
+
+    meusFavoritos.forEach(pet => {
+      const cardPerfil = document.createElement('div');
+      cardPerfil.classList.add('card-pet-perfil');
+
+      const statusAtual = pet.status || 'disponivel';
+
+      cardPerfil.innerHTML = `
+        <div class="pet-perfil-info">
+          <img src="${pet.foto}" alt="${pet.nome}" class="pet-perfil-foto" />
+          <div class="pet-perfil-detalhes">
+            <span class="badge-status ${statusAtual}">${statusAtual}</span>
+            <h3>${pet.nome}</h3>
+            <p>${pet.especie} · ${pet.idade} · ${pet.cidade}</p>
+          </div>
+        </div>
+        <div class="pet-perfil-acoes">
+          <button class="botao-acao ver-perfil" data-id="${pet.id}">
+            🔍 Ver perfil
+          </button>
+        </div>
+      `;
+
+      containerFavoritosPerfil.appendChild(cardPerfil);
+    });
+  }
+
   /* controle de abertura e fechamento do modal de cadastro */
-  const botaoCadastrar = document.querySelector('.botao-cadastrar');
   const modalCadastrar = document.getElementById('modal-cadastrar');
   const botaoFecharModal = document.getElementById('botao-fechar-modal');
   const botaoCancelarModal = document.getElementById('botao-cancelar-modal');

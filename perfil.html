@@ -20,8 +20,8 @@
         </div>
 
         <nav class="navegacao-menu">
-          <a href="#" class="item-menu ativo">Meus pets</a>
-          <a href="#" class="item-menu">Favoritos</a>
+          <a href="#" class="item-menu ativo" id="menu-meus-pets">Meus pets</a>
+          <a href="#" class="item-menu" id="menu-favoritos">Favoritos</a>
         </nav>
       </div>
 
@@ -62,10 +62,14 @@
 
       </section>
 
-      <section class="secao-lista-pets">
+      <section class="secao-lista-pets" id="secao-meus-pets">
         <div id="lista-pets-perfil" class="container-cards-perfil">
-          
         </div>
+      </section>
+
+
+      <section class="secao-lista-pets" id="secao-favoritos" style="display: none;">
+        <div id="lista-favoritos-perfil" class="container-cards-perfil"></div>
       </section>
 
       <div class="sobreposicao-modal" id="modal-cadastrar">
