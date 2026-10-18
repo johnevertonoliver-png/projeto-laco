@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minha Conta - Meus Pets</title>
   <link rel="stylesheet" href="./src/css/perfil.css">
+  <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -84,6 +85,17 @@
           </div>
 
           <form id="formulario-cadastrar-pet" class="formulario-modal">
+
+        
+            <div class="grupo-formulario largura-total">
+              <label>Foto do animal</label>
+              <button type="button" id="btn-upload-foto" class="botao-cancelar" style="width: 100%; text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                📸 Selecionar foto do dispositivo
+              </button>
+              <span id="nome-foto-selecionada" style="font-size: 13px; color: #64748b; display: block; margin-top: 6px;">
+                Nenhuma foto selecionada
+              </span>
+            </div>
             
             <div class="grupo-formulario">
               <label for="pet-nome">Nome</label>
@@ -97,7 +109,7 @@
 
             <div class="grupo-formulario">
               <label for="pet-especie">Espécie</label>
-              <select id="pet-especie">
+              <select id="pet-especie" required>
                 <option value="Cachorro">Cachorro</option>
                 <option value="Gato">Gato</option>
                 <option value="Outro">Outro</option>
@@ -106,17 +118,17 @@
 
             <div class="grupo-formulario">
               <label for="pet-raca">Raça</label>
-              <input type="text" id="pet-raca" placeholder="Ex.: SRD / Labrador">
+              <input type="text" id="pet-raca" placeholder="Ex.: SRD / Labrador" required>
             </div>
 
             <div class="grupo-formulario">
               <label for="pet-cidade">Cidade</label>
-              <input type="text" id="pet-cidade" placeholder="Ex.: João Pessoa, PB">
+              <input type="text" id="pet-cidade" placeholder="Ex.: João Pessoa, PB" required>
             </div>
 
             <div class="grupo-formulario">
               <label for="pet-sexo">Sexo</label>
-              <select id="pet-sexo">
+              <select id="pet-sexo" required>
                 <option value="Macho">Macho</option>
                 <option value="Fêmea">Fêmea</option>
               </select>
@@ -124,7 +136,7 @@
 
             <div class="grupo-formulario">
               <label for="pet-porte">Porte</label>
-              <select id="pet-porte">
+              <select id="pet-porte" required>
                 <option value="Pequeno">Pequeno</option>
                 <option value="Médio">Médio</option>
                 <option value="Grande">Grande</option>

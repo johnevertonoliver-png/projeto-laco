@@ -237,6 +237,12 @@ document.addEventListener('DOMContentLoaded', () => {
     formularioCadastrarPet.addEventListener('submit', (evento) => {
       evento.preventDefault();
 
+      /* validacao para exigir o envio da foto antes de salvar */
+    if (!urlFotoPet) {
+      alert('Por favor, selecione e envie uma foto do pet!');
+      return;
+    }
+
       
       const usuarioLogado = JSON.parse(localStorage.getItem('laco_usuario_logado'));
       const donoEmail = usuarioLogado ? usuarioLogado.email : 'desconhecido';
@@ -253,15 +259,80 @@ document.addEventListener('DOMContentLoaded', () => {
         porte: document.getElementById('pet-porte').value,
         sobre: document.getElementById('pet-sobre').value,
         status: 'disponível',
-        foto: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1' /* foto padrão temporária */
+        foto: urlFotoPet /* usa a URL da foto enviada pelo Cloudinary */
       };
 
       const petsSalvos = JSON.parse(localStorage.getItem('laco_pets')) || [];
       petsSalvos.push(novoPet);
       localStorage.setItem('laco_pets', JSON.stringify(petsSalvos));
 
-      fecharModal();
-      renderizarPetsPerfil(); 
+      /* reseta a foto e o formulário para o próximo cadastro */
+      urlFotoPet = '';
+      if (txtNomeFoto) {
+      txtNomeFoto.textContent = 'Nenhuma foto selecionada';
+      txtNomeFoto.style.color = '#64748b';
+    }
+    formularioCadastrarPet.reset();
+
+    fecharModal();
+    renderizarPetsPerfil(); 
     });
   }
 });
+
+
+
+
+/* Variável global para guardar a URL da foto enviada pelo Cloudinary */
+let urlFotoPet = '';
+
+/* Configuração do Cloudinary Upload Widget para envio de fotos */
+const btnUploadFoto = document.getElementById('btn-upload-foto');
+const txtNomeFoto = document.getElementById('nome-foto-selecionada');
+
+if (btnUploadFoto) {
+  /* Cria o widget de upload do Cloudinary */
+  const meuWidget = cloudinary.createUploadWidget(
+    {
+      cloudName: 'rwanooli',
+      uploadPreset: 'meu_preset_js', 
+      sources: ['local', 'url', 'camera'],
+      multiple: false,
+      maxFiles: 1,
+      clientAllowedFormats: ['jpg', 'jpeg', 'png', 'webp'],
+      language: 'pt',
+      text: {
+        pt: {
+          or: 'ou',
+          back: 'Voltar',
+          close: 'Fechar',
+          menu: {
+            files: 'Meus Ficheiros',
+            web: 'Endereço Web',
+            camera: 'Câmera'
+          },
+          local: {
+            browse: 'Escolher ficheiro',
+            dd_title: 'Arraste e solte a imagem aqui'
+          }
+        }
+      }
+    },
+    (error, result) => {
+      if (!error && result && result.event === 'success') {
+        /* Guarda a URL segura gerada pelo Cloudinary */
+        urlFotoPet = result.info.secure_url;
+
+        /* Atualiza a interface do modal indicando o envio com sucesso */
+        if (txtNomeFoto) {
+          txtNomeFoto.textContent = '✅ Foto enviada com sucesso!';
+          txtNomeFoto.style.color = '#10b981';
+        }
+      }
+    }
+  );
+
+  btnUploadFoto.addEventListener('click', () => {
+    meuWidget.open();
+  });
+}
