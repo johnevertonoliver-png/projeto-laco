@@ -24,10 +24,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const statusAtual = pet.status || 'disponivel';
 
+      /* usuário logado e verificação de favoritos */
+      const usuarioLogado = JSON.parse(localStorage.getItem('laco_usuario_logado'));
+      const emailUsuario = usuarioLogado ? usuarioLogado.email : 'desconhecido';
+      const chaveFavoritos = `laco_favoritos_${emailUsuario}`;
+
+      const favoritosSalvos = JSON.parse(localStorage.getItem(chaveFavoritos)) || [];
+      const jaFavoritado = favoritosSalvos.includes(pet.id);
+
+      const classeCoracao = jaFavoritado ? 'favorito' : '';
+      const iconeCoracao = jaFavoritado ? '&#9829;' : '&#9825;';
+
       card.innerHTML = `
         <div class="card-imagem-wrapper">
           <span class="badge-disponivel ${statusAtual}">${statusAtual === 'adotado' ? 'ADOTADO' : 'DISPONÍVEL'}</span>
-          <button class="btn-favoritar" aria-label="Favoritar pet">&#9825;</button>
+          <button class="btn-favoritar ${classeCoracao}" data-id="${pet.id}" aria-label="Favoritar pet">${iconeCoracao}</button>
           <img src="${pet.foto}" alt="${pet.nome}" class="card-img" />
         </div>
         <div class="card-conteudo">
@@ -43,6 +54,31 @@ document.addEventListener('DOMContentLoaded', () => {
           <a href="#" class="card-link">Quero conhecer &rarr;</a>
         </div>
       `;
+
+      // Evento do botão favoritar
+      const botaoFavoritar = card.querySelector('.btn-favoritar');
+      botaoFavoritar.addEventListener('click', () => {
+        if (!usuarioLogado) {
+          alert('Você precisa estar logado para favoritar pets!');
+          window.location.href = 'login.html';
+          return;
+        }
+
+        const idPet = pet.id;
+        let favoritos = JSON.parse(localStorage.getItem(chaveFavoritos)) || [];
+
+        if (favoritos.includes(idPet)) {
+          favoritos = favoritos.filter(id => id !== idPet);
+          botaoFavoritar.classList.remove('favorito');
+          botaoFavoritar.innerHTML = '&#9825;';
+        } else {
+          favoritos.push(idPet);
+          botaoFavoritar.classList.add('favorito');
+          botaoFavoritar.innerHTML = '&#9829;';
+        }
+
+        localStorage.setItem(chaveFavoritos, JSON.stringify(favoritos));
+      });
 
       gridPets.appendChild(card);
     });

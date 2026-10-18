@@ -771,3 +771,30 @@ body {
     box-sizing: border-box;
   }
 }
+
+/* Estilo padrão do botão de favoritar (coração vazio) */
+.btn-favoritar {
+  background: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #ff4d4d; /* Cor vermelha para o coração */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.btn-favoritar:hover {
+  transform: scale(1.1);
+}
+
+/* Estilo quando a classe 'favorito' é adicionada (coração preenchido) */
+.btn-favoritar.favorito {
+  background-color: #ff4d4d; /* Fundo vermelho */
+  color: white; /* Ícone branco */
+}
