@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         localStorage.setItem('laco_pets', JSON.stringify(petsSalvos));
         renderizarPetsPerfil();
+        atualizarEstatisticas();
       });
     });
 
@@ -141,12 +142,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         localStorage.setItem('laco_pets', JSON.stringify(petsSalvos));
         renderizarPetsPerfil();
+        atualizarEstatisticas();
       });
     });
   }
 
   /* executa a listagem inicial no perfil */
   renderizarPetsPerfil();
+  atualizarEstatisticas();
 
 
   /* renderizar favoritos no perfil */
@@ -275,10 +278,31 @@ document.addEventListener('DOMContentLoaded', () => {
     formularioCadastrarPet.reset();
 
     fecharModal();
-    renderizarPetsPerfil(); 
+    renderizarPetsPerfil();
+    atualizarEstatisticas();
     });
   }
 });
+
+function atualizarEstatisticas() {
+    const usuarioLogado = JSON.parse(localStorage.getItem('laco_usuario_logado'));
+    if (!usuarioLogado) return;
+
+    const petsSalvos = JSON.parse(localStorage.getItem('laco_pets')) || [];
+    const meusPets = petsSalvos.filter(pet => pet.donoEmail === usuarioLogado.email);
+
+    const publicados = meusPets.length;
+    const disponiveis = meusPets.filter(pet => pet.status !== 'adotado').length;
+    const adotados = meusPets.filter(pet => pet.status === 'adotado').length;
+
+    const elementosNumeros = document.querySelectorAll('.container-estatisticas .numero-estatistica');
+
+    if (elementosNumeros.length >= 3) {
+      elementosNumeros[0].textContent = publicados;
+      elementosNumeros[1].textContent = disponiveis;
+      elementosNumeros[2].textContent = adotados;
+    }
+  }
 
 
 
