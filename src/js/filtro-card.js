@@ -162,3 +162,22 @@ document.addEventListener('DOMContentLoaded', () => {
   
   renderizarPets(listaPets); 
 });
+
+/* evento de click para o link do menu suspenso */
+document.addEventListener('DOMContentLoaded', () => {
+  const linkPublicar = document.getElementById('link-publicar');
+
+  if (linkPublicar) {
+    linkPublicar.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const usuarioLogado = JSON.parse(localStorage.getItem('laco_usuario_logado'));
+
+      if (usuarioLogado) {
+        window.location.href = './perfil.html';
+      } else {
+        window.location.href = './login.html';
+      }
+    });
+  }
+});
