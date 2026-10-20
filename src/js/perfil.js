@@ -1,5 +1,6 @@
+import { abrirModalDetalhes } from "./modal.js";
 document.addEventListener('DOMContentLoaded', () => {
- 
+
   const usuarioSalvo = localStorage.getItem('laco_usuario_logado');
 
   if (usuarioSalvo) {
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       menuMeusPets.classList.add('ativo');
       menuFavoritos.classList.remove('ativo');
-      
+
       /* mostra a seção de meus pets e esconde a de favoritos */
       if (secaoMeusPets) secaoMeusPets.style.display = 'block';
       if (secaoFavoritos) secaoFavoritos.style.display = 'none';
@@ -50,18 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       menuFavoritos.classList.add('ativo');
       menuMeusPets.classList.remove('ativo');
-      
+
       /*Esconde a seção de meus pets e mostra a de favoritos */
       if (secaoMeusPets) secaoMeusPets.style.display = 'none';
       if (secaoFavoritos) secaoFavoritos.style.display = 'block';
 
       if (tituloPrincipal) tituloPrincipal.textContent = 'Meus pets favoritos';
-      if (botaoCadastrar) botaoCadastrar.style.display = 'none'; 
+      if (botaoCadastrar) botaoCadastrar.style.display = 'none';
 
       renderizarFavoritosPerfil();
     });
   }
- 
+
   const containerPetsPerfil = document.getElementById('lista-pets-perfil');
 
   function renderizarPetsPerfil() {
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const usuarioLogado = JSON.parse(localStorage.getItem('laco_usuario_logado'));
     const petsSalvos = JSON.parse(localStorage.getItem('laco_pets')) || [];
-    
+
     containerPetsPerfil.innerHTML = '';
 
 
@@ -118,9 +119,9 @@ document.addEventListener('DOMContentLoaded', () => {
       botao.addEventListener('click', (e) => {
         const idPet = Number(e.currentTarget.getAttribute('data-id'));
         let petsSalvos = JSON.parse(localStorage.getItem('laco_pets')) || [];
-        
+
         petsSalvos = petsSalvos.filter(p => p.id !== idPet);
-        
+
         localStorage.setItem('laco_pets', JSON.stringify(petsSalvos));
         renderizarPetsPerfil();
         atualizarEstatisticas();
@@ -132,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
       botao.addEventListener('click', (e) => {
         const idPet = Number(e.currentTarget.getAttribute('data-id'));
         let petsSalvos = JSON.parse(localStorage.getItem('laco_pets')) || [];
-        
+
         petsSalvos = petsSalvos.map(p => {
           if (p.id === idPet) {
             p.status = p.status === 'adotado' ? 'disponivel' : 'adotado';
@@ -200,6 +201,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* Delegação de eventos global para o container de favoritos */
+  if (containerFavoritosPerfil) {
+    containerFavoritosPerfil.addEventListener('click', (e) => {
+      const botaoVerPerfil = e.target.closest('.ver-perfil');
+      if (!botaoVerPerfil) return;
+
+      const idPet = Number(botaoVerPerfil.getAttribute('data-id'));
+      const petsSalvos = JSON.parse(localStorage.getItem('laco_pets')) || [];
+      const petSelecionado = petsSalvos.find(p => p.id === idPet);
+
+      if (petSelecionado) {
+        abrirModalDetalhes(petSelecionado);
+      }
+    });
+  }
+
+
   /* controle de abertura e fechamento do modal de cadastro */
   const modalCadastrar = document.getElementById('modal-cadastrar');
   const botaoFecharModal = document.getElementById('botao-fechar-modal');
@@ -241,12 +259,12 @@ document.addEventListener('DOMContentLoaded', () => {
       evento.preventDefault();
 
       /* validacao para exigir o envio da foto antes de salvar */
-    if (!urlFotoPet) {
-      alert('Por favor, selecione e envie uma foto do pet!');
-      return;
-    }
+      if (!urlFotoPet) {
+        alert('Por favor, selecione e envie uma foto do pet!');
+        return;
+      }
 
-      
+
       const usuarioLogado = JSON.parse(localStorage.getItem('laco_usuario_logado'));
       const donoEmail = usuarioLogado ? usuarioLogado.email : 'desconhecido';
 
@@ -272,37 +290,37 @@ document.addEventListener('DOMContentLoaded', () => {
       /* reseta a foto e o formulário para o próximo cadastro */
       urlFotoPet = '';
       if (txtNomeFoto) {
-      txtNomeFoto.textContent = 'Nenhuma foto selecionada';
-      txtNomeFoto.style.color = '#64748b';
-    }
-    formularioCadastrarPet.reset();
+        txtNomeFoto.textContent = 'Nenhuma foto selecionada';
+        txtNomeFoto.style.color = '#64748b';
+      }
+      formularioCadastrarPet.reset();
 
-    fecharModal();
-    renderizarPetsPerfil();
-    atualizarEstatisticas();
+      fecharModal();
+      renderizarPetsPerfil();
+      atualizarEstatisticas();
     });
   }
 });
 
 function atualizarEstatisticas() {
-    const usuarioLogado = JSON.parse(localStorage.getItem('laco_usuario_logado'));
-    if (!usuarioLogado) return;
+  const usuarioLogado = JSON.parse(localStorage.getItem('laco_usuario_logado'));
+  if (!usuarioLogado) return;
 
-    const petsSalvos = JSON.parse(localStorage.getItem('laco_pets')) || [];
-    const meusPets = petsSalvos.filter(pet => pet.donoEmail === usuarioLogado.email);
+  const petsSalvos = JSON.parse(localStorage.getItem('laco_pets')) || [];
+  const meusPets = petsSalvos.filter(pet => pet.donoEmail === usuarioLogado.email);
 
-    const publicados = meusPets.length;
-    const disponiveis = meusPets.filter(pet => pet.status !== 'adotado').length;
-    const adotados = meusPets.filter(pet => pet.status === 'adotado').length;
+  const publicados = meusPets.length;
+  const disponiveis = meusPets.filter(pet => pet.status !== 'adotado').length;
+  const adotados = meusPets.filter(pet => pet.status === 'adotado').length;
 
-    const elementosNumeros = document.querySelectorAll('.container-estatisticas .numero-estatistica');
+  const elementosNumeros = document.querySelectorAll('.container-estatisticas .numero-estatistica');
 
-    if (elementosNumeros.length >= 3) {
-      elementosNumeros[0].textContent = publicados;
-      elementosNumeros[1].textContent = disponiveis;
-      elementosNumeros[2].textContent = adotados;
-    }
+  if (elementosNumeros.length >= 3) {
+    elementosNumeros[0].textContent = publicados;
+    elementosNumeros[1].textContent = disponiveis;
+    elementosNumeros[2].textContent = adotados;
   }
+}
 
 
 
@@ -319,7 +337,7 @@ if (btnUploadFoto) {
   const meuWidget = cloudinary.createUploadWidget(
     {
       cloudName: 'rwanooli',
-      uploadPreset: 'meu_preset_js', 
+      uploadPreset: 'meu_preset_js',
       sources: ['local', 'url', 'camera'],
       multiple: false,
       maxFiles: 1,
