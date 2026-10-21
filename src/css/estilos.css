@@ -1,0 +1,801 @@
+/* estilo do cabeçalho fixo */
+
+.cabecalho-fixo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #F0EAE1; 
+  z-index: 1000;             
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.cabecalho-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.8rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.logo-texto {
+  font-family: serif;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #1F302B;            
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+
+.menu-navegacao {
+  display: flex;
+  gap: 3.5rem;
+}
+
+.link-menu {
+  text-decoration: none;
+  color: #2D3748;
+  font-size: 1.05rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+
+.link-menu::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;                   
+  height: 2px;
+  background-color: #E26A51;  
+  transition: width 0.3s ease; 
+}
+
+.link-menu:hover {
+  color: #E26A51;
+}
+
+.link-menu:hover::after {
+  width: 100%;                 
+}
+
+
+.btn-entrar {
+  display: inline-block;
+  padding: 0.65rem 1.8rem;
+  border: 1.5px solid #A0A0A0;
+  border-radius: 50px;
+  color: #2D3748;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-entrar:hover {
+  border-color: #E26A51;
+  color: #E26A51;
+  background-color: rgba(226, 106, 81, 0.05);
+}
+
+
+body {
+  padding-top: 100px;
+  background-color: #F0EAE1;
+  margin: 0;
+}
+
+/* configuração da seção hero */
+.secao-hero {
+  background-color: #F0EAE1; 
+  padding: 2rem 3rem 4rem 3rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 90px);
+}
+
+.container-hero {
+  max-width: 1450px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+
+.hero-conteudo {
+  flex: 1.1;
+  max-width: 680px;
+}
+
+
+.hero-rotulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #E26A51;
+  text-transform: uppercase;
+}
+
+.hero-rotulo::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background-color: #E26A51;
+}
+
+/* títlo principal da hero */
+.hero-titulo {
+  font-family: "Playfair Display", Georgia, Cambria, "Times New Roman", serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: #2E4A3E;            
+  line-height: 1.08;
+  margin: 1rem 0 1.5rem 0;
+  letter-spacing: -1px;
+}
+
+.hero-titulo span {
+  color: #E26A51;            
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-descricao {
+  color: #5A6560;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  margin-bottom: 2.2rem;
+  max-width: 500px;
+}
+
+
+.botao-principal {
+  display: inline-block;
+  background-color: #E26A51;
+  color: #FFFFFF;
+  padding: 1rem 2rem;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.2s, transform 0.1s;
+  box-shadow: 0 8px 20px rgba(226, 106, 81, 0.25);
+}
+
+.botao-principal:hover {
+  background-color: #D15A41;
+  transform: translateY(-2px);
+}
+
+
+.hero-beneficios {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2.2rem;
+}
+
+.beneficio-item {
+  font-size: 0.95rem;
+  color: #2D3748;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.beneficio-item::before {
+  content: "✓";
+  color: #E26A51;
+  font-weight: bold;
+}
+
+/* coluna da imagem */
+.hero-wrapper-imagem {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  position: relative;
+  height: 600px;
+}
+
+
+.fundo-forma-organica {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  background-color: #DCE5E0;
+  /* o formato ovoide do fundo */
+  border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+  z-index: 1;
+  right: -30px; 
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* foto principal */
+.foto-organica {
+  position: relative;
+  width: 480px;
+  height: 560px;
+  object-fit: cover;
+  border-radius: 40% 60% 50% 50% / 40% 50% 60% 50%;
+  z-index: 2;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+
+/* seção do rodapé */
+.secao-passos {
+  background-color: #1B3B32; 
+  padding: 5rem 3rem;
+  box-sizing: border-box;
+  color: #FFFFFF;
+}
+
+.container-passos {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+
+.passos-cabecalho {
+  flex: 1.1;
+  max-width: 500px;
+}
+
+.passos-rotulo {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #E26A51; 
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.2rem;
+}
+
+.passos-titulo {
+  font-family: "Playfair Display", Georgia, Cambria, "Times New Roman", serif;
+  font-size: 3.8rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+
+.passos-lista {
+  flex: 1.8;
+  display: flex;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.passo-item {
+  flex: 1;
+  border-left: 1px solid rgba(255, 255, 255, 0.15); 
+  padding-left: 1.8rem;
+}
+
+
+.passo-numero {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.6rem;
+  font-variant-numeric: lining-nums;
+  font-style: italic;
+  color: #E26A51;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.passo-titulo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0 0 0.8rem 0;
+}
+
+.passo-descricao {
+  font-size: 0.95rem;
+  color: #B2C4BD; 
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* responsividade da área rodapé */
+@media (max-width: 900px) {
+  .secao-passos {
+    padding: 3rem 1.5rem; 
+  }
+
+  .container-passos {
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  .passos-cabecalho {
+    max-width: 100%;
+  }
+
+  .passos-titulo {
+    font-size: 2.5rem; 
+  }
+
+  .passos-lista {
+    flex-direction: column; 
+    width: 100%;
+    gap: 2rem;
+  }
+
+  .passo-item {
+    border-left: none; 
+    border-top: 1px solid rgba(255, 255, 255, 0.15); 
+    padding-top: 1.5rem;
+  }
+
+  .passo-numero {
+    margin-bottom: 0.8rem;
+  }
+}
+
+.container-usuario-logado {
+  position: relative;
+  display: inline-block;
+}
+
+/* botão do perfil que substitui o "entrar" */
+.botao-perfil-menu {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1.8rem;
+  border: 1.5px solid #A0A0A0;
+  border-radius: 50px;
+  background-color: transparent;
+  color: #2D3748;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.botao-perfil-menu:hover {
+  border-color: #E26A51;
+  color: #E26A51;
+  background-color: rgba(226, 106, 81, 0.05);
+}
+
+.icone-seta-baixo {
+  font-size: 0.6rem;
+  transition: transform 0.2s ease;
+}
+
+/* menu suspenso (dropdown) */
+.menu-suspenso {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  background-color: #FFFFFF;
+  min-width: 180px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 1000;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+
+.item-menu {
+  display: block;
+  padding: 12px 18px;
+  color: #2D3748;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.item-menu:hover {
+  background-color: rgba(226, 106, 81, 0.05);
+  color: #E26A51;
+}
+
+.item-sair {
+  color: #DC2626;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.item-sair:hover {
+  background-color: rgba(220, 38, 38, 0.05);
+  color: #DC2626;
+}
+
+/* ==========================================
+   Seção de Listagem de Pets e Filtros
+   ========================================== */
+
+.secao-pets {
+  background-color: #F9F6F0; /* Creme bem suave/off-white que contrasta com o tom da hero */
+  padding: 4rem 3rem 6rem 3rem;
+  box-sizing: border-box;
+}
+
+.container-pets {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.pets-cabecalho {
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pets-rotulo {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #E26A51;
+  text-transform: uppercase;
+}
+
+.pets-titulo {
+  font-family: "Playfair Display", Georgia, Cambria, serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #1F302B;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.pets-subtitulo {
+  color: #5A6560;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* Barra de Filtros */
+.barra-filtros {
+  background-color: #FFFFFF; /* Fundo branco para a barra se destacar do creme suave */
+  border-radius: 16px;
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  flex-wrap: wrap;
+}
+
+.filtros-especie {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.filtro-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0.65rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2D3748;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filtro-btn:hover {
+  background-color: #F0EAE1;
+}
+
+.filtro-btn.ativo {
+  background-color: #1F302B; /* Verde escuro do protótipo */
+  color: #FFFFFF;
+}
+
+.filtros-busca {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.input-busca-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icone-lupa {
+  position: absolute;
+  left: 14px;
+  font-size: 0.85rem;
+  color: #A0AEC0;
+}
+
+#input-pesquisa {
+  padding: 0.65rem 1rem 0.65rem 2.4rem;
+  border: 1px solid #E2E8F0;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  outline: none;
+  width: 220px;
+  background-color: #FAFAFA;
+  transition: border-color 0.2s;
+}
+
+#input-pesquisa:focus {
+  border-color: #E26A51;
+  background-color: #FFFFFF;
+}
+
+.select-idade {
+  padding: 0.65rem 1.2rem;
+  border: 1px solid #E2E8F0;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  outline: none;
+  background-color: #FAFAFA;
+  color: #4A5568;
+  cursor: pointer;
+}
+
+.select-idade:focus {
+  border-color: #E26A51;
+}
+
+/* Grid de Cards */
+.grid-pets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 2rem;
+}
+
+/* Card Individual */
+.card-pet {
+  background-color: #FFFFFF; /* Fundo branco limpo para o card */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-pet:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.card-imagem-wrapper {
+  position: relative;
+  width: 100%;
+  height: 320px;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Estilo Base da Badge de Status --- */
+.badge-disponivel {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background-color: #FFFFFF; /* Fundo branco para a badge se destacar */
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 50px;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+}
+
+/* Pseudo-elemento para a bolinha */
+.badge-disponivel::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* --- Variação: Status DISPONÍVEL --- */
+.badge-disponivel.disponivel {
+  color: #15803D; /* Verde escuro para o texto */
+}
+
+/* Bolinha Verde para Disponível */
+.badge-disponivel.disponivel::before {
+  background-color: #22C55E; /* Verde brilhante para a bolinha */
+}
+
+/* --- Variação: Status ADOTADO --- */
+.badge-disponivel.adotado {
+  color: #1D4ED8; /* Azul escuro para o texto */
+}
+
+/* Bolinha Azul para Adotado */
+.badge-disponivel.adotado::before {
+  background-color: #3B82F6; /* Azul brilhante para a bolinha */
+}
+
+.btn-favoritar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: #FFFFFF;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: transform 0.2s;
+  color: #718096;
+}
+
+.btn-favoritar:hover {
+  transform: scale(1.1);
+  color: #E26A51;
+}
+
+/* Conteúdo do Card */
+.card-conteudo {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.card-info-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.card-nome {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1F302B;
+  margin: 0;
+}
+
+.card-idade {
+  font-size: 0.9rem;
+  color: #718096;
+  font-weight: 500;
+}
+
+.card-info-detalhes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.detalhe-item {
+  font-size: 0.95rem;
+  color: #E26A51; /* Cor laranja do protótipo para ícones/textos de detalhe */
+  font-weight: 500;
+}
+
+.card-divisor {
+  height: 1px;
+  background-color: #EDF2F7;
+  width: 100%;
+  margin: 0.2rem 0;
+}
+
+.card-link {
+  text-decoration: none;
+  color: #1F302B;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-link:hover {
+  color: #E26A51;
+}
+
+@media (max-width: 900px) {
+  .secao-pets {
+    padding: 3rem 1.5rem;
+  }
+
+  .pets-titulo {
+    font-size: 2.5rem;
+  }
+
+  .barra-filtros {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .filtros-especie {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .filtros-busca {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .input-busca-wrapper,
+  #input-pesquisa,
+  .select-idade {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* Estilo padrão do botão de favoritar (coração vazio) */
+.btn-favoritar {
+  background: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #ff4d4d; /* Cor vermelha para o coração */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.btn-favoritar:hover {
+  transform: scale(1.1);
+}
+
+/* Estilo quando a classe 'favorito' é adicionada (coração preenchido) */
+.btn-favoritar.favorito {
+  background-color: #ff4d4d; /* Fundo vermelho */
+  color: white; /* Ícone branco */
+}
+

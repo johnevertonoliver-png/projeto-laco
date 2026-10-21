@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Conta - Meus Pets</title>
+  <link rel="stylesheet" href="./src/css/modal.css">
+  <link rel="stylesheet" href="./src/css/perfil.css">
+  <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+</head>
+<body>
+
+  <div class="container-principal">
+    
+    <aside class="menu-lateral">
+      <div class="menu-topo">
+        
+        <div class="perfil-usuario">
+          <div class="info-usuario">
+            <h2 class="nome-usuario" id="usuario-nome">...</h2>
+          </div>
+        </div>
+
+        <nav class="navegacao-menu">
+          <a href="#" class="item-menu ativo" id="menu-meus-pets">Meus pets</a>
+          <a href="#" class="item-menu" id="menu-favoritos">Favoritos</a>
+        </nav>
+      </div>
+
+      <div class="menu-rodape">
+        <a href="./index.html" class="item-menu">Início</a>
+        <a href="#" class="item-menu sair" id="botao-sair">Sair da conta</a>
+      </div>
+    </aside>
+
+    <main class="conteudo-principal">
+      
+      <header class="cabecalho-conteudo">
+        <div class="titulos-cabecalho">
+          <span class="subtitulo">MINHA CONTA</span>
+          <h1 class="titulo-principal">Meus pets publicados</h1>
+        </div>
+        
+        <button class="botao-cadastrar">
+          + Cadastrar animal
+        </button>
+      </header>
+      
+      <section class="container-estatisticas">
+        
+        <div class="card-estatistica">
+          <span class="rotulo-estatistica">Publicados</span>
+          <span class="numero-estatistica">0</span>
+        </div>
+
+        <div class="card-estatistica">
+          <span class="rotulo-estatistica">Disponíveis</span>
+          <span class="numero-estatistica">0</span>
+        </div>
+
+        <div class="card-estatistica">
+          <span class="rotulo-estatistica">Adotados</span>
+          <span class="numero-estatistica">0</span>
+        </div>
+
+      </section>
+
+      <section class="secao-lista-pets" id="secao-meus-pets">
+        <div id="lista-pets-perfil" class="container-cards-perfil">
+        </div>
+      </section>
+
+
+      <section class="secao-lista-pets" id="secao-favoritos" style="display: none;">
+        <div id="lista-favoritos-perfil" class="container-cards-perfil"></div>
+      </section>
+
+      <div class="sobreposicao-modal" id="modal-cadastrar">
+        <div class="container-modal">
+          
+          <div class="cabecalho-modal">
+            <div>
+              <span class="subtitulo-modal">PUBLICAÇÃO</span>
+              <h2 class="titulo-modal">Cadastrar animal</h2>
+            </div>
+            <button class="botao-fechar" id="botao-fechar-modal">&times;</button>
+          </div>
+
+          <form id="formulario-cadastrar-pet" class="formulario-modal">
+
+        
+            <div class="grupo-formulario largura-total">
+              <label>Foto do animal</label>
+              <button type="button" id="btn-upload-foto" class="botao-cancelar" style="width: 100%; text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                📸 Selecionar foto do dispositivo
+              </button>
+              <span id="nome-foto-selecionada" style="font-size: 13px; color: #64748b; display: block; margin-top: 6px;">
+                Nenhuma foto selecionada
+              </span>
+            </div>
+            
+            <div class="grupo-formulario">
+              <label for="pet-nome">Nome</label>
+              <input type="text" id="pet-nome" placeholder="Ex.: Mel" required>
+            </div>
+
+            <div class="grupo-formulario">
+              <label for="pet-idade">Idade</label>
+              <input type="text" id="pet-idade" placeholder="Ex.: 2 anos ou 6 meses" required>
+            </div>
+
+            <div class="grupo-formulario">
+              <label for="pet-especie">Espécie</label>
+              <select id="pet-especie" required>
+                <option value="Cachorro">Cachorro</option>
+                <option value="Gato">Gato</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </div>
+
+            <div class="grupo-formulario">
+              <label for="pet-raca">Raça</label>
+              <input type="text" id="pet-raca" placeholder="Ex.: SRD / Labrador" required>
+            </div>
+
+            <div class="grupo-formulario">
+              <label for="pet-cidade">Cidade</label>
+              <input type="text" id="pet-cidade" placeholder="Ex.: João Pessoa, PB" required>
+            </div>
+
+            <div class="grupo-formulario">
+              <label for="pet-sexo">Sexo</label>
+              <select id="pet-sexo" required>
+                <option value="Macho">Macho</option>
+                <option value="Fêmea">Fêmea</option>
+              </select>
+            </div>
+
+            <div class="grupo-formulario">
+              <label for="pet-porte">Porte</label>
+              <select id="pet-porte" required>
+                <option value="Pequeno">Pequeno</option>
+                <option value="Médio">Médio</option>
+                <option value="Grande">Grande</option>
+              </select>
+            </div>
+
+            <div class="grupo-formulario largura-total">
+              <label for="pet-sobre">Sobre o animal</label>
+              <textarea id="pet-sobre" rows="4" placeholder="Conte um pouco sobre personalidade e cuidados..."></textarea>
+            </div>
+
+            <div class="acoes-modal largura-total">
+              <button type="button" class="botao-cancelar" id="botao-cancelar-modal">Cancelar</button>
+              <button type="submit" class="botao-salvar">Salvar publicação</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Modal de Detalhes do Pet -->
+<div class="sobreposicao-modal" id="modal-detalhes-pet" style="display: none;">
+  <div class="container-modal-detalhes">
+    
+    <button class="botao-fechar-detalhes" id="botao-fechar-detalhes">&times;</button>
+
+    <div class="modal-conteudo-duplo">
+      <div class="modal-lado-foto">
+        <img id="modal-pet-foto" src="" alt="Foto do Pet">
+      </div>
+
+      <div class="modal-lado-info">
+        <h2 id="modal-pet-nome">Nome do Pet</h2>
+        <p id="modal-pet-sub-raca-idade" class="sub-raca-idade">Raça · Idade</p>
+
+        <p id="modal-pet-sobre" class="texto-sobre">
+          Descrição sobre o pet aparecerá aqui...
+        </p>
+
+        <div class="container-caracteristicas">
+          <div class="caixa-caracteristica">
+            <span class="rotulo-caracteristica">SEXO</span>
+            <span id="modal-pet-sexo" class="valor-caracteristica">Macho</span>
+          </div>
+          <div class="caixa-caracteristica">
+            <span class="rotulo-caracteristica">PORTE</span>
+            <span id="modal-pet-porte" class="valor-caracteristica">Grande</span>
+          </div>
+          <div class="caixa-caracteristica">
+            <span class="rotulo-caracteristica">IDADE</span>
+            <span id="modal-pet-idade" class="valor-caracteristica">Adulto</span>
+          </div>
+        </div>
+
+        <div class="localizacao-modal">
+          📍 Está em <span id="modal-pet-cidade">Cidade, Estado</span>
+        </div>
+
+        <button id="modal-btn-quero-adotar" class="botao-quero-adotar">
+          Quero adotar ➔
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+  
+  <script type="module" src="./src/js/modal.js"></script>
+  <script type="module" src="./src/js/perfil.js"></script>
+</body>
+</html>

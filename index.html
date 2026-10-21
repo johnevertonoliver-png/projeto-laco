@@ -4,9 +4,201 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>projeto-laco</title>
+    <link rel="stylesheet" href="./src/css/estilos.css" />
+    <link rel="stylesheet" href="./src/css/modal.css" />
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+
+  <header class="cabecalho-fixo">
+  <div class="cabecalho-container">
+    <a href="#" class="logo-texto">laço</a>
+
+  <nav class="menu-navegacao">
+  
+  <a href="#secao-pets" class="link-menu">Encontrar um pet</a>
+  <a href="#como-funciona" class="link-menu">Como funciona</a>
+  <a href="#publicar" class="link-menu" id="link-publicar">Publicar animal</a>
+</nav>
+
+  <div class="area-usuario">
+    <a href="./login.html" id="botao-entrar" class="btn-entrar">Entrar</a>
+    </div>
+
+    <div id="container-usuario-logado" class="container-usuario-logado" style="display: none;">
+    <button id="botao-perfil-menu" class="botao-perfil-menu">
+      <span id="texto-primeiro-nome">Nome</span>
+      <span class="icone-seta-baixo">▼</span>
+    </button>
+
+    <div id="menu-suspenso" class="menu-suspenso" style="display: none;">
+      <a href="perfil.html" class="item-menu">Meu Perfil</a>
+      <a href="#" id="link-sair" class="item-menu item-sair">Sair</a>
+    </div>
+
+  </div>
+  </div>
+</header>
+
+
+<section class="secao-hero">
+  <div class="container-hero">
+    
+    <div class="hero-conteudo">
+      <span class="hero-rotulo">ADOÇÃO RESPONSÁVEL</span>
+
+      <h1 class="hero-titulo">Um encontro pode mudar <span>duas vidas.</span></h1>
+      <p class="hero-descricao">
+        Conheça animais que estão pertinho de você e prontos para encontrar um lar cheio de afeto.
+      </p>
+
+      <div class="hero-acoes">
+        <a href="#secao-pets" class="botao-principal">Encontrar meu companheiro &rarr;</a>
+      </div>
+
+      <div class="hero-beneficios">
+        <span class="beneficio-item">Perfis verificados</span>
+        <span class="beneficio-item">Adoção segura</span>
+      </div>
+    </div>
+
+    <div class="hero-wrapper-imagem">
+      <div class="fundo-forma-organica"></div>
+      <img src="./src/assets/dog-hero.jpeg" alt="Pessoa com pet" class="foto-organica" />
+    </div>
+
+  </div>
+</section>
+
+<section class="secao-pets" id="secao-pets">
+  <div class="container-pets">
+    
+    <div class="pets-cabecalho">
+      <span class="pets-rotulo">NOVOS AMIGOS</span>
+      <h2 class="pets-titulo">Quem vai conquistar você?</h2>
+      <p class="pets-subtitulo">Use os filtros e encontre um novo melhor amigo que combine com a sua rotina.</p>
+    </div>
+
+    <div class="barra-filtros">
+      <div class="filtros-especie">
+        <button class="filtro-btn" data-especie="todos">Todos os pets</button>
+        <button class="filtro-btn" data-especie="cachorro">🐶 Cachorros</button>
+        <button class="filtro-btn" data-especie="gato">🐱 Gatos</button>
+        <button class="filtro-btn" data-especie="outro">🐰 Outros</button>
+      </div>
+
+      <div class="filtros-busca">
+        <div class="input-busca-wrapper">
+          <span class="icone-lupa">🔍</span>
+          <input type="text" id="input-pesquisa" placeholder="Nome ou cidade" />
+        </div>
+        <select id="select-idade" class="select-idade">
+          <option value="">Todas as idades</option>
+          <option value="filhote">Até 1 ano</option>
+          <option value="adulto">1 a 5 anos</option>
+          <option value="idoso">Mais de 5 anos</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid-pets" id="grid-pets">
+      
+    </div>
+
+  </div>
+</section>
+
+
+<section class="secao-passos" id="como-funciona">
+  <div class="container-passos">
+    
+    <div class="passos-cabecalho">
+      <span class="passos-rotulo">ADOÇÃO SEM COMPLICAÇÃO</span>
+      <h2 class="passos-titulo">
+        O começo de uma amizade em três passos.
+      </h2>
+    </div>
+
+    <div class="passos-lista">
+      
+      <div class="passo-item">
+        <span class="passo-numero">01</span>
+        <h3 class="passo-titulo">Encontre</h3>
+        <p class="passo-descricao">
+          Explore perfis e escolha o animal que tocou seu coração.
+        </p>
+      </div>
+
+      <div class="passo-item">
+        <span class="passo-numero">02</span>
+        <h3 class="passo-titulo">Converse</h3>
+        <p class="passo-descricao">
+          Fale com o protetor e conheça a história e a rotina do pet.
+        </p>
+      </div>
+
+      <div class="passo-item">
+        <span class="passo-numero">03</span>
+        <h3 class="passo-titulo">Acolha</h3>
+        <p class="passo-descricao">
+          Prepare a casa e receba seu novo companheiro com carinho.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Modal de Detalhes / Adoção do Pet -->
+<div class="sobreposicao-modal" id="modal-detalhes-pet" style="display: none;">
+  <div class="container-modal-detalhes">
+    
+    <button class="botao-fechar-detalhes" id="botao-fechar-detalhes">&times;</button>
+
+    <div class="modal-conteudo-duplo">
+      <div class="modal-lado-foto">
+        <img id="modal-pet-foto" src="" alt="Foto do Pet">
+      </div>
+
+      <div class="modal-lado-info">
+        <h2 id="modal-pet-nome">Nome do Pet</h2>
+        <p id="modal-pet-sub-raca-idade" class="sub-raca-idade">Raça · Idade</p>
+
+        <p id="modal-pet-sobre" class="texto-sobre">
+          Descrição sobre o pet aparecerá aqui...
+        </p>
+
+        <div class="container-caracteristicas">
+          <div class="caixa-caracteristica">
+            <span class="rotulo-caracteristica">SEXO</span>
+            <span id="modal-pet-sexo" class="valor-caracteristica">Macho</span>
+          </div>
+          <div class="caixa-caracteristica">
+            <span class="rotulo-caracteristica">PORTE</span>
+            <span id="modal-pet-porte" class="valor-caracteristica">Grande</span>
+          </div>
+          <div class="caixa-caracteristica">
+            <span class="rotulo-caracteristica">IDADE</span>
+            <span id="modal-pet-idade" class="valor-caracteristica">Adulto</span>
+          </div>
+        </div>
+
+        <div class="localizacao-modal">
+          📍 Está em <span id="modal-pet-cidade">Cidade, Estado</span>
+        </div>
+
+        <button id="modal-btn-quero-adotar" class="botao-quero-adotar">
+          Quero adotar ➔
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script type="module" src="./src/js/filtro-card.js"></script>
+<script type="module" src="./src/js/main.js"></script>
+
   </body>
 </html>
