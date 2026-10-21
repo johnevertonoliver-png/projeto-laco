@@ -31,3 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+const btnQueroAdotar = document.getElementById('modal-btn-quero-adotar');
+if (btnQueroAdotar) {
+  btnQueroAdotar.addEventListener('click', () => {
+    window.open('https://wa.me/', '_blank');
+  });
+}
